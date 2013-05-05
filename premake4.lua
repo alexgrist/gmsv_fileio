@@ -26,12 +26,13 @@ project "gmsv_fileio"
 	defines { "GMMODULE" }
 	files { "src/**.*", "include/**.*" }
 	libdirs { "lib/" }
-	links { "bootil_static" }
 	kind "SharedLib"
 	targetname( "gmsv_fileio" )
 
 	if (os.is("Windows")) then
+		links { "bootil_static" }
 		targetsuffix "_win32"
 	elseif (os.is("linux")) then
+		links { "libbootil_static" }
 		targetsuffix "_linux"
 	end;
